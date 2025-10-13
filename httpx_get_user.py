@@ -4,22 +4,17 @@ import httpx
 import time
 
 # Создаем данные (payload) для запроса на создание пользователя
-# В словаре содержатся все необходимые поля для создания пользователя
 create_user_payload = {
     "email": f"user.{time.time()}@example.com",  # Генерируем уникальный email используя текущее время
-    "lastName": "string",     # Фамилия пользователя (заглушка)
-    "firstName": "string",    # Имя пользователя (заглушка)
-    "middleName": "string",   # Отчество пользователя (заглушка)
-    "phoneNumber": "string"   # Номер телефона пользователя (заглушка)
+    "lastName": "string",
+    "firstName": "string",
+    "middleName": "string",
+    "phoneNumber": "string"
 }
 
 # Отправляем POST-запрос на сервер для создания нового пользователя
-# URL: http://localhost:8003/api/v1/users
-# В теле запроса передаем созданный payload в формате JSON
 create_user_response = httpx.post("http://localhost:8003/api/v1/users", json=create_user_payload)
-
-# Преобразуем ответ от сервера из JSON формата в Python словарь
-# Это позволяет удобно работать с данными в коде
+# Преобразуем ответ от сервера из JSON формата
 create_user_response_data = create_user_response.json()
 
 # Выводим в консоль полный ответ от сервера после создания пользователя
